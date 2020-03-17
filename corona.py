@@ -28,38 +28,38 @@ def return_line_coordinates(x0,y0,x1,y1):
     return p
 
 #red stuff on cell surface
-redshit = new_matrix(0,0)
+rs = new_matrix(0,0)
 #base
-add_edge(redshit,0,0,0,0,4,0)
-add_edge(redshit,0,0,0,4,2,0)
-add_edge(redshit,4,2,0,0,4,0)
-add_point(redshit,1,2,9)
+add_edge(rs,0,0,0,0,4,0)
+add_edge(rs,0,0,0,4,2,0)
+add_edge(rs,4,2,0,0,4,0)
+add_point(rs,1,2,9)
 
 five_m = make_scale(3,3,3)
-matrix_mult(five_m,redshit)
+matrix_mult(five_m,rs)
 
-one = return_line_coordinates(redshit[0][0],redshit[0][1],
-                              redshit[1][0],redshit[1][1])
-two = return_line_coordinates(redshit[2][0],redshit[2][1],
-                              redshit[3][0],redshit[3][1])
-three = return_line_coordinates(redshit[4][0],redshit[4][1],
-                                redshit[5][0],redshit[5][1])
+one = return_line_coordinates(rs[0][0],rs[0][1],
+                              rs[1][0],rs[1][1])
+two = return_line_coordinates(rs[2][0],rs[2][1],
+                              rs[3][0],rs[3][1])
+three = return_line_coordinates(rs[4][0],rs[4][1],
+                                rs[5][0],rs[5][1])
 
 for cor_set in [one,two,three]:
     for cor in cor_set:
-        add_edge(redshit,redshit[6][0],redshit[6][1],redshit[6][2],cor[0],cor[1],0)
+        add_edge(rs,rs[6][0],rs[6][1],rs[6][2],cor[0],cor[1],0)
 
 five_m = make_scale(2,2,2)
-matrix_mult(five_m,redshit)
+matrix_mult(five_m,rs)
 
 x_limit = [50,450]
 y_limit = [50,450]
 
-for i in range(150):
+for i in range(100):
     x = random.randint(50,400)
     y = random.randint(50,400)
     t = make_translate(x,y,0)
-    redshit_copy = deepcopy(redshit)
+    redshit_copy = deepcopy(rs)
     matrix_mult(t,redshit_copy)
     draw_lines(redshit_copy,screen,red)
     #print_matrix(redshit_copy)
@@ -77,5 +77,5 @@ for i in range(50):
     draw_lines(o_s_copy,screen,orange)
 
 
-#draw_lines(redshit,screen,red)
+#draw_lines(rs,screen,red)
 parse_file( 'corona', edges, transform, screen, gray )

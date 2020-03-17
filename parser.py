@@ -80,7 +80,6 @@ def parse_file( fname, edges, transform, screen, color ):
             add_sphere(edges, float(args[0]),float(args[1]),float(args[2]),float(args[3]),step)
 
         elif line == 'torus':
-            print('TORUS')
             add_torus(edges,float(args[0]),float(args[1]),float(args[2]),float(args[3]),float(args[4]),step)
 
         elif line == 'hermite' or line == 'bezier':

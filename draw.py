@@ -33,10 +33,12 @@ def add_box( points, x, y, z, width, height, depth ):
   # ====================
 def generate_sphere( points, cx, cy, cz, r, step ):
     for i in range(200):
+        i = math.pi * i * .01
         for ii in range(100):
-            x = int(r) * math.cos(math.pi * ii * .01) + cx
-            y = int(r) * math.sin(math.pi * ii * .01) * math.cos(math.pi * i * .01) + cy
-            z = int(r) * math.sin(math.pi * ii * .01) * math.sin(math.pi * i * .01) + cz
+            ii = math.pi * ii * .01
+            x = int(r) * math.cos(ii) + cx
+            y = int(r) * math.sin(ii) * math.cos(i) + cy
+            z = int(r) * math.sin(ii) * math.sin(i) + cz
             add_point(points,x,y,z)
     
   # ====================
@@ -57,11 +59,12 @@ def add_sphere( points, cx, cy, cz, r, step=None ):
   # ====================
 def generate_torus( points, cx, cy, cz, r0, r1, step ):
     for i in range(20):
+        i = math.pi * i * .1
         for ii in range(20):
-            
-            x = math.cos(i * math.pi * .1) * (r0 * math.cos(ii * math.pi * .1) + r1) + cx
-            y = r0 * math.sin(ii * math.pi * .1) + cy
-            z = -1 * math.sin(i * math.pi * .1) * (r0 * math.cos(ii * math.pi * .1) + r1) + cz
+            ii = math.pi * ii * .1
+            x = math.cos(i) * (r0 * math.cos(ii) + r1) + cx
+            y = r0 * math.sin(ii) + cy
+            z = -1 * math.sin(i) * (r0 * math.cos(ii) + r1) + cz
             add_point(points,x,y,z)
 
     #m = new_matrix(0,0)
