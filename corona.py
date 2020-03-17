@@ -10,6 +10,7 @@ screen = new_screen()
 gray = [ 128,128,128]
 red = [255,0,0]
 orange = [255,165,0]
+yellow = [245,289,31]
 edges = []
 transform = new_matrix()
 
@@ -52,12 +53,9 @@ for cor_set in [one,two,three]:
 five_m = make_scale(2,2,2)
 matrix_mult(five_m,rs)
 
-x_limit = [50,450]
-y_limit = [50,450]
-
-for i in range(100):
-    x = random.randint(50,400)
-    y = random.randint(50,400)
+for i in range(75):
+    x = random.randint(75,400)
+    y = random.randint(75,400)
     t = make_translate(x,y,0)
     redshit_copy = deepcopy(rs)
     matrix_mult(t,redshit_copy)
@@ -68,13 +66,17 @@ o_s = new_matrix(0,0)
 add_sphere(o_s,0,0,0,5)
 
 for i in range(50):
-    x = random.randint(50,400)
-    y = random.randint(50,400)
+    x = random.randint(75,400)
+    y = random.randint(75,400)
     t = make_translate(x,y,0)
 
     o_s_copy = deepcopy(o_s)
     matrix_mult(t,o_s_copy)
     draw_lines(o_s_copy,screen,orange)
+
+to = new_matrix(0,0)
+add_torus(to ,250, 250, 0, 250, 10)
+draw_lines(to,screen,yellow)
 
 
 #draw_lines(rs,screen,red)

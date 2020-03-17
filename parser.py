@@ -47,7 +47,7 @@ The file follows the following format:
 
 See the file script for an example of the file format
 """
-ARG_COMMANDS = [ 'circle', 'bezier', 'hermite', 'line', 'scale', 'move', 'rotate', 'save','sphere','torus','box' ]
+ARG_COMMANDS = [ 'circle', 'bezier', 'hermite', 'line', 'scale', 'move', 'rotate', 'save','sphere','torus','box','clear' ]
 
 def parse_file( fname, edges, transform, screen, color ):
 
@@ -125,6 +125,9 @@ def parse_file( fname, edges, transform, screen, color ):
 
         elif line == 'apply':
             matrix_mult( transform, edges )
+
+        elif line == 'clear':
+            edges = new_matrix(0,0)
 
         elif line == 'display' or line == 'save':
             #clear_screen(screen)
